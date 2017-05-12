@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 
+#include "util.h"
+
 
 /**
  * [4,3,2,7,8,2,3,1]
@@ -38,13 +40,6 @@ std::vector<int> findDuplicates(std::vector<int>& nums) {
     return res;
 }
 
-
-void printVec(std::vector<int> vec) {
-    for (int i = 0; i < vec.size(); i++) {
-        std::cout << vec[i] << " ";
-    }
-    std::cout << std::endl;
-}
 
 
 int main(int argc, char** argv) {
