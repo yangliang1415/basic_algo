@@ -37,9 +37,8 @@ std::string add_two_string(const std::string& val1, const std::string& val2) {
 #endif
         i--;
         j--;
-        result += std::to_string(num);
+        result = std::to_string(num) + result;
     }
-    reverse(result.begin(), result.end());
     return result;
 }
 
