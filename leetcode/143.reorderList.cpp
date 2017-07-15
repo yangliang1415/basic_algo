@@ -100,22 +100,40 @@ void reorderList(ListNode *head) {
 }
 
 
+ListNode* reverseKGroup(ListNode* head, int k) {
+    if (!head || !head -> next) return head;
+    int len = 0;
+    while (head) {
+        head = head -> next;
+        len++;
+    }
+    if (len < k) return head;
+
+    ListNode* oldHead = head;
+    cout << "oldHead=" << oldHead -> val << endl;
+    ListNode* newHeadFirstKNodes = NULL;
+    int count = 0;
+    while (head && count < k) {
+        ListNode* next = head -> next;
+        head -> next = newHeadFirstKNodes;
+        newHeadFirstKNodes = head;
+        head = next;
+        count++;
+    }
+    // oldHead -> next = head;
+    return newHeadFirstKNodes;
+}
+
 int main() {
     ListNode *l1 = new ListNode(1);
     ListNode *l2 = new ListNode(2);
-    ListNode *l3 = new ListNode(3);
-    ListNode *l4 = new ListNode(4);
-    ListNode *l5 = new ListNode(5);
     connect_two_node(l1, l2);
-    connect_two_node(l2, l3);
-    connect_two_node(l3, l4);
-    connect_two_node(l4, l5);
 
     print_linked_list(l1);
 
-    reorderList(l1);
+    ListNode* res = reverseKGroup(l1, 1);
 
-    print_linked_list(l1);
+    print_linked_list(res);
 
     return 0;
 }
